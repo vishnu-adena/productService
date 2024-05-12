@@ -38,13 +38,13 @@ jobs:
     - name: Create Application Version
       run: |
           aws elasticbeanstalk create-application-version \
-            --application-name your-application-name \
+            --application-name e-dhukan_ProductService \
             --version-label v1 \
             --source-bundle S3Bucket=${{ secrets.AWS_BUCKET }},S3Key=target/${{ secrets.PROJECT_NAME }}
 
     - name: Deploy Application Version
       run: |
           aws elasticbeanstalk update-environment \
-            --application-name your-application-name \
-            --environment-name your-environment-name \
+            --application-name e-dhukan_ProductService \
+            --environment-name E-dhukanProductService-11759 \
             --version-label v1
