@@ -34,8 +34,17 @@ jobs:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ${{ secrets.AWS_REGION }}
-
-    - name: Deploy to AWS Elastic Beanstalk
+        
+    - name: Create Application Version
       run: |
-        aws elasticbeanstalk create-application-version --application-name ProductService --version-label v${{ github.run_number }} --source-bundle S3Bucket=${{ secrets.AWS_BUCKET }},S3Key=${{ secrets.PROJECT_NAME }}
-        aws elasticbeanstalk update-environment --application-name ProductService --environment-name your-environment-name --version-label v${{ github.run_number }}
+          aws elasticbeanstalk create-application-version \
+            --application-name your-application-name \
+            --version-label v1 \
+            --source-bundle S3Bucket=${{ secrets.AWS_BUCKET }},S3Key=target/${{ secrets.PROJECT_NAME }}
+
+    - name: Deploy Application Version
+      run: |
+          aws elasticbeanstalk update-environment \
+            --application-name your-application-name \
+            --environment-name your-environment-name \
+            --version-label v1
