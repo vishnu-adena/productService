@@ -40,7 +40,7 @@ jobs:
           aws elasticbeanstalk create-application-version \
             --application-name e-dhukan_ProductService \
             --version-label v1 \
-            --source-bundle S3Bucket=elasticbeanstalk-us-east-2-767398148932,S3Key=target/${{ secrets.PROJECT_NAME }}
+            --source-bundle S3Bucket=elasticbeanstalk-us-east-2-767398148932,S3Key=s3://elasticbeanstalk-us-east-2-767398148932/target/
 
     - name: Deploy Application Version
       run: |
