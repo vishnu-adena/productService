@@ -20,14 +20,11 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
 
-    - name: Navigate to project directory
-      run: cd productService
-
     - name: Build with Maven
-      run: mvn clean package  # Adjust Maven goals as needed
+      run: mvn -f pom.xml clean package  # Adjust Maven goals as needed
 
     - name: Archive built artifact
       uses: actions/upload-artifact@v2
       with:
         name: java-app
-        path: EDhukan/EDhukan_ProductService/target/*.jar  # Path to the built JAR file
+        path: target/*.jar  # Path to the built JAR file
