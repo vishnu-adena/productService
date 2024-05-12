@@ -33,9 +33,9 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-2  # Replace with your AWS region
+        aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Deploy to AWS Elastic Beanstalk
       run: |
-        aws elasticbeanstalk create-application-version --application-name your-application-name --version-label v${{ github.run_number }} --source-bundle S3Bucket=your-bucket-name,S3Key=your-jar-file.jar
-        aws elasticbeanstalk update-environment --application-name your-application-name --environment-name your-environment-name --version-label v${{ github.run_number }}
+        aws elasticbeanstalk create-application-version --application-name ProductService --version-label v${{ github.run_number }} --source-bundle S3Bucket=${{ secrets.AWS_BUCKET }},S3Key=${{ secrets.PROJECT_NAME }}
+        aws elasticbeanstalk update-environment --application-name ProductService --environment-name your-environment-name --version-label v${{ github.run_number }}
