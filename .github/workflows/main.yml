@@ -28,20 +28,3 @@ jobs:
 
       - name: Build with Maven
         run: mvn -f pom.xml clean package
-
-      - name: Create Application Version
-        run: |
-          aws elasticbeanstalk create-application-version \
-            --application-name your-application-name \
-            --version-label v1 \
-            --source-bundle S3Bucket=edhukan,S3Key=target/ProductService-1.0.jar
-
-      - name: Deploy Application Version
-        run: |
-          aws elasticbeanstalk update-environment \
-            --application-name your-application-name \
-            --environment-name your-environment-name \
-            --version-label v1
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
