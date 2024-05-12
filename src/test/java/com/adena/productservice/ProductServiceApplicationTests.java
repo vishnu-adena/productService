@@ -66,12 +66,12 @@ class ProductServiceApplicationTests {
     @Test
     void contextLoads() {
     }
-    
+    @Test
     void setAllProducts() {
-        // int i = 1;
-        // while (i < 21) {
+         int i = 1;
+         while (i < 21) {
         //     getSingleProduct(i);
-        //     i = i + 1;
+             i = i + 1;
         }
     }
 }
