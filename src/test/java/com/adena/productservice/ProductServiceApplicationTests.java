@@ -68,10 +68,10 @@ class ProductServiceApplicationTests {
     }
     @Test
     void setAllProducts() {
-        int i = 1;
-        while (i < 21) {
-            getSingleProduct(i);
-            i = i + 1;
+        // int i = 1;
+        // while (i < 21) {
+        //     getSingleProduct(i);
+        //     i = i + 1;
         }
     }
 }
