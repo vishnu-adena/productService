@@ -66,7 +66,7 @@ class ProductServiceApplicationTests {
     @Test
     void contextLoads() {
     }
-    @Test
+    
     void setAllProducts() {
         // int i = 1;
         // while (i < 21) {
